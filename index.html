@@ -1,473 +1,534 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THPT BẢO LỘC - Hệ thống tra cứu thời khóa biểu</title>
-<!-- Đặt cute-purple-bg.png cùng thư mục với index.html để dùng nền caro tím. -->
+<meta name="theme-color" content="#7650c8">
+<title>THPT Bảo Lộc | Cổng tra cứu thời khóa biểu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
-
-:root{
-  --purple:#7446c8;
-  --purple-dark:#3e247b;
-  --purple-mid:#7a4bd0;
-  --lavender:#eadcff;
-  --lavender-2:#f7f1ff;
-  --line:#e4d5f7;
-  --text:#282044;
-  --muted:#776f8d;
-  --white:#fff;
+:root {
+ --purple:#7650c8;
+ --deep:#39216f;
+ --ink:#24183f;
+ --lav:#eee5ff;
+ --paper:#fffdfd;
+ --pink:#ffc9df;
+ --yellow:#ffe66d;
+ --mint:#c8f5d8;
+ --line:#2b2042;
+ --shadow:5px 6px 0 var(--line);
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:"Oswald",Arial,sans-serif;
-  color:var(--text);
-  background-color:#f4edff;
-  background-image:url("cute-purple-bg.png");
-  background-size:420px auto;
-  background-repeat:repeat;
-  background-attachment:fixed;
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+ margin:0;
+ color:var(--ink);
+ font-family:"Be Vietnam Pro",sans-serif;
+ background-color:#9b70bb;
+ background-image:
+  linear-gradient(45deg,#ad8ac8 25%,transparent 25%,transparent 75%,#ad8ac8 75%),
+  linear-gradient(45deg,#ad8ac8 25%,transparent 25%,transparent 75%,#ad8ac8 75%);
+ background-position:0 0,90px 90px;
+ background-size:180px 180px;
 }
 
-a{text-decoration:none;color:inherit}
+a { color:inherit; text-decoration:none; }
 
-.page{
-  width:min(1180px,calc(100% - 36px));
-  margin:10px auto 0;
-}
-
-/* HEADER */
-.topbar{
-  height:62px;
-  background:rgba(255,255,255,.94);
-  border:1px solid #dfd4ee;
-  border-radius:18px;
-  box-shadow:0 8px 24px rgba(96,64,145,.10);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 17px;
-  position:relative;
-  z-index:5;
+.wrap {
+ width:min(1050px,calc(100% - 34px));
+ margin:14px auto 28px;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.topbar {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:16px;
+ padding:12px 18px;
+ background:var(--paper);
+ border:2px solid var(--line);
+ border-radius:16px;
+ box-shadow:var(--shadow);
 }
 
-.logo-circle{
-  width:42px;height:42px;border-radius:50%;
-  background:#eee2ff;
-  display:grid;place-items:center;
-  color:#6840bd;font-weight:800;font-size:13px;
-  overflow:hidden;
-}
-.logo-circle img{
-  width:100%;height:100%;object-fit:contain;
+.brand {
+ display:flex;
+ align-items:center;
+ gap:12px;
 }
 
-.brand-name{
-  font-size:15px;font-weight:800;letter-spacing:.1px;
-}
-.brand-sub{
-  font-size:9.5px;color:#81768f;margin-top:2px;
-}
-
-.system{
-  display:flex;align-items:center;gap:18px;
-}
-.system-text{text-align:right}
-.system-title{
-  font-size:11px;letter-spacing:.5px;color:#5d5076;
-}
-.system-sub{
-  font-size:9px;color:#9b8fa9;font-style:italic;margin-top:3px;
-}
-.menu{
-  width:25px;height:25px;display:flex;flex-direction:column;
-  justify-content:center;gap:5px;
-}
-.menu span{height:2px;width:18px;background:#44336b;border-radius:3px;display:block}
-
-/* HERO */
-.hero{
-  margin-top:16px;
-  height:300px;
-  border-radius:22px 22px 0 0;
-  overflow:hidden;
-  position:relative;
-  background:linear-gradient(135deg,rgba(238,223,255,.96),rgba(207,181,243,.94) 50%,rgba(166,123,222,.94));
+.logo {
+ width:48px;
+ height:48px;
+ display:grid;
+ place-items:center;
+ border:2px solid var(--line);
+ border-radius:13px;
+ background:var(--yellow);
+ font:800 22px "Be Vietnam Pro";
+ box-shadow:3px 3px 0 var(--line);
+ transform:rotate(-4deg);
 }
 
+.brand-name {
+ font-weight:800;
+ letter-spacing:.2px;
+ font-size:15px;
+}
 
-.hero-content{
-  position:relative;
-  z-index:2;
-  padding:53px 48px;
+.brand-sub {
+ font-size:10px;
+ font-weight:700;
+ color:#786b91;
+ margin-top:3px;
 }
-.hero h1{
-  margin:0;
-  font-size:43px;
-  line-height:1.1;
-  letter-spacing:-1.5px;
-  color:#352071;
+
+.top-tag {
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:1px;
+ padding:9px 13px;
+ border:2px solid var(--line);
+ border-radius:9px;
+ background:var(--mint);
 }
-.hero-small{
-  margin-top:9px;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:4px;
-  color:#4b397d;
+
+.hero {
+ margin-top:22px;
+ position:relative;
+ overflow:hidden;
+ padding:clamp(22px,4vw,42px);
+ border:2px solid var(--line);
+ border-radius:22px;
+ background:var(--purple);
+ box-shadow:var(--shadow);
+ color:white;
 }
-.hero-system{
+
+.hero:before,.hero:after {
+ content:"";
+ position:absolute;
+ border:2px solid var(--line);
+ transform:rotate(12deg);
+}
+
+.hero:before {
+ width:170px;
+ height:170px;
+ border-radius:50%;
+ background:var(--pink);
+ right:8%;
+ top:-72px;
+}
+
+.hero:after {
+ width:95px;
+ height:95px;
+ background:var(--yellow);
+ right:23%;
+ bottom:-54px;
+ transform:rotate(28deg);
+}
+
+.hero-inner {
+ position:relative;
+ z-index:1;
+ max-width:700px;
+}
+
+.kicker {
+ display:inline-block;
+ padding:7px 12px;
+ background:var(--yellow);
+ color:var(--ink);
+ border:2px solid var(--line);
+ border-radius:7px;
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:1.4px;
+ transform:rotate(-2deg);
+}
+
+h1 {
+ font:900 clamp(36px,6vw,64px)/1.02 "Be Vietnam Pro",sans-serif;
+ margin:20px 0 10px;
+ text-shadow:3px 3px 0 var(--deep);
+ letter-spacing:-1.3px;
+ -webkit-text-stroke:.35px currentColor;
+}
+
+.hero p {
+ font-size:14px;
+ line-height:1.8;
+ max-width:560px;
+ margin:0;
+ color:#f4edff;
+}
+
+.hero-sticker {
+ position:absolute;
+ right:8%;
+ bottom:28px;
+ z-index:2;
+ font-size:48px;
+ transform:rotate(12deg);
+ filter:drop-shadow(3px 3px 0 #352050);
+}
+
+.content {
+ margin-top:18px;
+ padding:clamp(17px,3vw,26px);
+ background:var(--paper);
+ border:2px solid var(--line);
+ border-radius:22px;
+ box-shadow:var(--shadow);
+}
+
+.section-head {
+ display:flex;
+ justify-content:space-between;
+ align-items:end;
+ gap:15px;
+ margin-bottom:15px;
+}
+
+.heading {
+ display:flex;
+ align-items:center;
+ gap:13px;
+}
+
+.heading-icon {
+ width:48px;
+ height:48px;
+ display:grid;
+ place-items:center;
+ background:var(--pink);
+ border:2px solid var(--line);
+ border-radius:13px;
+ font-size:23px;
+ box-shadow:3px 3px 0 var(--line);
+ transform:rotate(-3deg);
+}
+
+h2 {
+ font:900 clamp(23px,3vw,31px) "Be Vietnam Pro";
+ margin:0;
+ letter-spacing:-.5px;
+ text-shadow:2px 2px 0 #f4d8ff;
+}
+
+.desc {
+ font-size:11px;
+ color:#766b89;
+ margin-top:5px;
+}
+
+.term {
+ font-size:10px;
+ font-weight:800;
+ text-align:right;
+ background:var(--lav);
+ border:1.5px dashed #8664c5;
+ border-radius:9px;
+ padding:9px 12px;
+ line-height:1.6;
+}
+
+.cards {
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:12px;
+}
+
+.card {
+ min-height:138px;
+ position:relative;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ padding:14px 15px;
+ background:#fff;
+ border:2px solid var(--line);
+ border-radius:15px;
+ box-shadow:4px 4px 0 var(--line);
+ transition:transform .18s,box-shadow .18s;
+}
+
+.card:hover {
+ transform:translate(-2px,-3px);
+ box-shadow:7px 7px 0 var(--line);
+}
+
+.card:nth-child(1) { background:#e5f4ff; }
+.card:nth-child(2) { background:#ffe4ef; }
+.card:nth-child(3) { background:#fff2b8; }
+.card:nth-child(4) { background:#e7ddff; }
+.card:nth-child(5) { background:#dcf8e5; }
+.card:nth-child(6) { background:#ffe3c8; }
+
+.card-icon {
+ width:36px;
+ height:36px;
+ display:grid;
+ place-items:center;
+ background:white;
+ border:2px solid var(--line);
+ border-radius:12px;
+ font-size:19px;
+ margin-bottom:9px;
+}
+
+.card h3 {
+ font-size:16px;
+ line-height:1.2;
+ font-weight:900;
+ letter-spacing:-.25px;
+ text-shadow:1px 1px 0 rgba(255,255,255,.75);
+ margin:0 0 7px;
+ max-width:90%;
+}
+
+.card p {
+ font-size:11px;
+ line-height:1.5;
+ color:#5f5670;
+ margin:0;
+ max-width:90%;
+}
+
+.go {
+ position:absolute;
+ right:13px;
+ bottom:13px;
+ width:31px;
+ height:31px;
+ display:grid;
+ place-items:center;
+ border:2px solid var(--line);
+ border-radius:50%;
+ background:var(--yellow);
+ font-size:18px;
+ font-weight:900;
+}
+
+footer {
+ margin-top:18px;
+ padding:19px 22px;
+ background:var(--deep);
+ color:white;
+ border:2px solid var(--line);
+ border-radius:18px;
+ box-shadow:var(--shadow);
+}
+
+.footer-main {
+ display:flex;
+ align-items:flex-start;
+ gap:16px;
+}
+
+.footer-logo {
+ flex:0 0 54px;
+ height:54px;
+ display:grid;
+ place-items:center;
+ background:var(--yellow);
+ color:var(--ink);
+ border:2px solid var(--line);
+ border-radius:12px;
+ font:800 20px "Be Vietnam Pro";
+}
+
+footer h3 {
+ font-size:14px;
+ margin:2px 0 9px;
+}
+
+footer p {
+ font-size:10px;
+ line-height:1.9;
+ color:#eee6ff;
+ margin:0;
+}
+
+.footer-bottom {
+ display:flex;
+ justify-content:space-between;
+ gap:12px;
+ border-top:1px solid #ffffff55;
+ padding-top:13px;
+ margin-top:18px;
+ font-size:9px;
+ color:#d9c9f5;
+}
+
+.footer-bottom strong {
+ color:var(--yellow);
+ letter-spacing:1px;
+}
+
+@media(max-width:760px) {
+ .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .hero-sticker { right:5%;font-size:38px; }
+ .term { max-width:150px; }
+}
+
+@media(max-width:520px) {
+ .wrap {
+  width:calc(100% - 20px);
+  margin-top:10px;
+ }
+
+ .topbar { padding:10px 12px; }
+ .top-tag { font-size:8px;padding:7px; }
+ .brand-name { font-size:12px; }
+ .brand-sub { font-size:9px; }
+
+ .hero {
   margin-top:15px;
-  font-family:Georgia,serif;
-  font-style:italic;
-  font-size:17px;
-  color:#59427e;
-}
+  padding:28px 22px;
+ }
 
-/* CONTENT CARD */
-.content{
-  margin-top:-1px;
-  background:rgba(255,255,255,.96);
-  border-radius:22px;
-  padding:28px 28px 27px;
-  position:relative;
-  z-index:3;
-  box-shadow:0 15px 35px rgba(63,40,104,.10);
-}
+ .hero p {
+  font-size:12px;
+  padding-right:12px;
+ }
 
-.section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:18px;
-}
-.section-title-wrap{
-  display:flex;align-items:center;gap:9px;
-}
-.tiny-cute{
-  color:#9a6dd3;
-  font-size:16px;
-  transform:rotate(-10deg);
-  margin-right:-2px;
-}
-.section-icon{
-  width:43px;height:43px;border-radius:12px;
-  background:#eee1ff;
-  display:grid;place-items:center;
-  color:#7147ca;font-size:20px;
-}
-.section-title{
-  font-size:21px;font-weight:800;
-  line-height:1.1;
-}
-.section-desc{
-  font-size:10px;color:#82798e;margin-top:4px;
-}
-.term{text-align:right}
-.term-main{font-size:10px;font-weight:800}
-.term-sub{font-size:9px;color:#8b8195;margin-top:5px}
+ .hero:before { right:-40px; }
+ .hero:after { right:18%; }
+ .hero-sticker {
+  bottom:12px;
+  right:12px;
+  font-size:31px;
+ }
 
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-.card{
-  min-height:157px;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:18px 19px;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(248,240,255,.94));
-  transition:.18s ease;
-}
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 9px 22px rgba(135,92,193,.16);
-  border-color:#cbb1ed;
-}
-.card:after{
-  content:"";
-  position:absolute;
-  width:72px;height:72px;
-  right:-25px;bottom:-23px;
-  background:#eee2ff;
-  border-radius:50%;
-}
-.card-icon{
-  width:40px;height:40px;border-radius:11px;
-  background:#eee1ff;
-  color:#7044c8;
-  display:grid;place-items:center;
-  font-size:17px;
-  margin-bottom:19px;
-}
-.card h3{
-  margin:0 0 6px;
-  font-size:13px;
-  font-weight:800;
-}
-.card p{
-  margin:0;
-  width:82%;
-  font-size:9.5px;
-  line-height:1.55;
-  color:#7d748a;
-}
-.arrow{
-  position:absolute;
-  right:13px;bottom:12px;
-  z-index:2;
-  width:29px;height:29px;border-radius:50%;
-  background:#7a4bd0;color:#fff;
-  display:grid;place-items:center;
-  font-size:16px;
-  box-shadow:0 4px 10px rgba(101,55,173,.2);
-}
+ .content { padding:19px 14px; }
+ .section-head { align-items:flex-start; }
+ .term { display:none; }
 
-/* STATS */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:12px;
-}
-.stat{
-  border:1px solid var(--line);
-  border-radius:13px;
-  padding:13px 16px;
-  background:#faf7ff;
-}
-.stat-number{
-  font-size:20px;font-weight:800;color:#6941bf;
-}
-.stat-label{
-  font-size:9.5px;color:#80768e;margin-top:2px;
-}
+ .cards {
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+ }
 
-/* QUOTE */
-.quote{
-  margin-top:16px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  min-height:88px;
-  background:linear-gradient(120deg,#eee0ff,#fbf8ff);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:Georgia,serif;
-  font-style:italic;
-  color:#5f487e;
-}
-.quote-main{font-size:16px}
-.quote-by{font-size:10px;margin-top:8px;font-family:"Be Vietnam Pro",sans-serif;font-style:normal;color:#857a91}
+ .card {
+  min-height:130px;
+  padding:12px;
+ }
 
-/* FOOTER */
-footer{
-  margin-top:25px;
-  min-height:238px;
-  border-radius:21px 21px 0 0;
-  background:linear-gradient(125deg,#4a2b88,#7950c3);
-  color:#fff;
-  padding:28px 30px 20px;
-  box-shadow:0 12px 30px rgba(60,36,118,.15);
-}
-.footer-top{display:flex;gap:22px;align-items:flex-start}
-.footer-logo{
-  width:65px;height:65px;flex:0 0 65px;
-  border-radius:15px;background:#fff;
-  display:grid;place-items:center;overflow:hidden;
-  color:#7044c8;
-  font-family:"Oswald",Arial,sans-serif;
-  font-weight:700;
-  font-size:17px;
-}
-.footer-title{
-  font-size:15px;font-weight:800;margin:3px 0 13px;
-}
-.footer-line{
-  font-size:9.5px;line-height:1.9;
-  color:#f7f2ff;
-}
-.footer-line strong{font-weight:800}
-.footer-line a{text-decoration:underline}
-.footer-bottom{
-  margin-top:22px;padding-top:14px;
-  border-top:1px solid rgba(255,255,255,.25);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:8.5px;color:#eee7fb;
-}
-.footer-tus{
-  font-family:"Oswald",Arial,sans-serif;
-  font-size:14px;
-  font-weight:500;
-  letter-spacing:.8px;
-  color:#fff;
-}
-
-/* MOBILE */
-@media(max-width:800px){
-  .page{width:min(100% - 20px,680px)}
-  .hero{height:270px}
-  .hero-content{padding:45px 28px}
-  .hero h1{font-size:34px}
-    .cards{grid-template-columns:1fr 1fr}
-}
-@media(max-width:560px){
-  .page{width:calc(100% - 16px);margin-top:8px}
-  .topbar{height:58px;padding:0 12px}
-  .system-text{display:none}
-  .hero{margin-top:10px;height:260px}
-  .hero-content{padding:45px 24px}
-  .hero h1{font-size:30px}
-  .hero-small{letter-spacing:2px}
-  .content{padding:21px 14px}
-  .section-head{align-items:flex-start}
-  .term{display:none}
-  .cards,.stats{grid-template-columns:1fr}
-  .card{min-height:145px}
-  footer{padding:24px 18px}
-  .footer-bottom{align-items:flex-start;gap:10px;flex-direction:column}
-  .footer-tus{font-size:13px}
+ footer { padding:20px 16px; }
+ .footer-bottom { flex-direction:column; }
 }
 </style>
 </head>
 
 <body>
-<div class="page">
+<div class="wrap">
 
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo-circle">BL</div>
-      <div>
-        <div class="brand-name">THPT BẢO LỘC</div>
-        <div class="brand-sub">Cơ sở 1 · Thành phố Bảo Lộc</div>
-      </div>
-    </div>
+<header class="topbar">
+ <div class="brand">
+  <div class="logo">BL</div>
+  <div>
+   <div class="brand-name">TRƯỜNG THPT BẢO LỘC</div>
+   <div class="brand-sub">Cơ sở 1 · Bảo Lộc, Lâm Đồng</div>
+  </div>
+ </div>
+ <div class="top-tag">CỔNG THÔNG TIN GIÁO DỤC ✦</div>
+</header>
 
-    <div class="system">
-      <div class="system-text">
-        <div class="system-title">HỆ THỐNG TRA CỨU THỜI KHÓA BIỂU</div>
-        <div class="system-sub">Kết nối tri thức · Vững bước tương lai</div>
-      </div>
-      <div class="menu" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
+<section class="hero">
+ <div class="hero-inner">
+  <span class="kicker">WELCOME TO OUR SCHOOL</span>
+  <h1>THỜI KHÓA BIỂU<br>THPT BẢO LỘC</h1>
+  <p>Cổng tra cứu thời khóa biểu và phân công giảng dạy dành cho giáo viên, học sinh. Chọn nội dung cần tra cứu bên dưới để bắt đầu.</p>
+ </div>
+ <div class="hero-sticker">📚</div>
+</section>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>THPT BẢO LỘC</h1>
-      <div class="hero-small">CƠ SỞ 1 · HỆ THỐNG TRA CỨU THỜI KHÓA BIỂU</div>
-    </div>
-  </section>
+<main class="content">
+ <div class="section-head">
+  <div class="heading">
+   <div class="heading-icon">🗓️</div>
+   <div>
+    <h2>Tra cứu nhanh</h2>
+    <div class="desc">Tất cả thông tin thời khóa biểu ở cùng một nơi</div>
+   </div>
+  </div>
+  <div class="term">HỌC KỲ 1<br>NĂM HỌC 2026–2027</div>
+ </div>
 
-  <main class="content">
-    <div class="section-head">
-      <div class="section-title-wrap">
-        <div class="tiny-cute">♡</div>
-        <div class="section-icon">▦</div>
-        <div>
-          <div class="section-title">Thời khóa biểu</div>
-          <div class="section-desc">Tra cứu nhanh, rõ ràng và thuận tiện</div>
-        </div>
-      </div>
-      <div class="term">
-        <div class="term-main">Học kỳ 1 · Năm học 2026–2027</div>
-        <div class="term-sub">Cập nhật: 07/09/2026</div>
-      </div>
-    </div>
+ <div class="cards">
+  <a class="card" href="tkb_block_0.html">
+   <div class="card-icon">🏫</div>
+   <h3>Thời khóa biểu khối lớp</h3>
+   <p>Xem thời khóa biểu các lớp trong buổi sáng.</p>
+   <span class="go">↗</span>
+  </a>
 
-    <div class="cards">
-      <a class="card" href="tkb_block_0.html">
-        <div class="card-icon">♡</div>
-        <h3>Thời khóa biểu khối lớp</h3>
-        <p>Xem thời khóa biểu các lớp trong buổi sáng.</p>
-        <div class="arrow">→</div>
-      </a>
+  <a class="card" href="tkb_school_0.html">
+   <div class="card-icon">👩🏻‍🏫</div>
+   <h3>Thời khóa biểu giáo viên</h3>
+   <p>Tra cứu thời khóa biểu theo từng giáo viên.</p>
+   <span class="go">↗</span>
+  </a>
 
-      <a class="card" href="tkb_school_0.html">
-        <div class="card-icon">✿</div>
-        <h3>Thời khóa biểu giáo viên</h3>
-        <p>Tra cứu thời khóa biểu theo từng giáo viên.</p>
-        <div class="arrow">→</div>
-      </a>
+  <a class="card" href="pcgd_lop_0.html">
+   <div class="card-icon">📋</div>
+   <h3>Bảng PCGD theo lớp</h3>
+   <p>Xem bảng phân công giảng dạy theo lớp.</p>
+   <span class="go">↗</span>
+  </a>
 
-      <a class="card" href="pcgd_lop_0.html">
-        <div class="card-icon">🍒</div>
-        <h3>Bảng PCGD theo lớp</h3>
-        <p>Xem bảng phân công giảng dạy theo lớp.</p>
-        <div class="arrow">→</div>
-      </a>
+  <a class="card" href="pcgd_gv_0.html">
+   <div class="card-icon">📝</div>
+   <h3>Bảng PCGD theo giáo viên</h3>
+   <p>Xem bảng phân công giảng dạy theo giáo viên.</p>
+   <span class="go">↗</span>
+  </a>
 
-      <a class="card" href="pcgd_gv_0.html">
-        <div class="card-icon">♡</div>
-        <h3>Bảng PCGD theo giáo viên</h3>
-        <p>Xem bảng phân công giảng dạy theo giáo viên.</p>
-        <div class="arrow">→</div>
-      </a>
+  <a class="card" href="classes.html">
+   <div class="card-icon">🎒</div>
+   <h3>Danh sách lớp</h3>
+   <p>Tra cứu danh sách 33 lớp trong trường.</p>
+   <span class="go">↗</span>
+  </a>
 
-      <a class="card" href="classes.html">
-        <div class="card-icon">♧</div>
-        <h3>Danh sách lớp</h3>
-        <p>Tra cứu danh sách 33 lớp trong trường.</p>
-        <div class="arrow">→</div>
-      </a>
+  <a class="card" href="teachers.html">
+   <div class="card-icon">🌷</div>
+   <h3>Danh sách giáo viên</h3>
+   <p>Tra cứu danh sách 71 giáo viên.</p>
+   <span class="go">↗</span>
+  </a>
+ </div>
+</main>
 
-      <a class="card" href="teachers.html">
-        <div class="card-icon">✦</div>
-        <h3>Danh sách giáo viên</h3>
-        <p>Tra cứu danh sách 71 giáo viên.</p>
-        <div class="arrow">→</div>
-      </a>
-    </div>
+<footer>
+ <div class="footer-main">
+  <div class="footer-logo">BL</div>
+  <div>
+   <h3>THPT BẢO LỘC · CƠ SỞ 1</h3>
+   <p>
+    <strong>ĐƠN VỊ CHỦ QUẢN:</strong> Trường THPT Bảo Lộc Cơ sở 1 · TP. Bảo Lộc · Tỉnh Lâm Đồng<br>
+    <strong>Địa chỉ:</strong> 245 Nguyễn Công Trứ · P2 · TP. Bảo Lộc · Lâm Đồng<br>
+    <strong>Điện thoại:</strong> 02633 717 497<br>
+    <strong>Email:</strong> <a href="mailto:c23nguyendu.lamdong@moet.edu.vn">c23nguyendu.lamdong@moet.edu.vn</a>
+   </p>
+  </div>
+ </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-number">33</div>
-        <div class="stat-label">Lớp học buổi sáng</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">71</div>
-        <div class="stat-label">Giáo viên</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">20</div>
-        <div class="stat-label">Môn học</div>
-      </div>
-    </div>
-      <div class="quote-by">— THPT BẢO LỘC —</div>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-top">
-      <div class="footer-logo">BL</div>
-      <div>
-        <div class="footer-title">THPT BẢO LỘC · CƠ SỞ 1</div>
-        <div class="footer-line"><strong>ĐƠN VỊ CHỦ QUẢN:</strong> Trường THPT BẢO LỘC CƠ SỞ 1 - TP Bảo Lộc - Tỉnh Lâm Đồng</div>
-        <div class="footer-line"><strong>Địa chỉ:</strong> 245 Nguyễn Công Trứ - P2 - TP Bảo Lộc - Lâm Đồng</div>
-        <div class="footer-line"><strong>Điện thoại:</strong> 02633 717 497</div>
-        <div class="footer-line"><strong>Email:</strong> <a href="mailto:c23nguyendu.lamdong@moet.edu.vn">c23nguyendu.lamdong@moet.edu.vn</a></div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div>© 2026 THPT BẢO LỘC · Cơ sở 1</div>
-      <div class="footer-tus">Tus is here</div>
-    </div>
-  </footer>
+ <div class="footer-bottom">
+  <span>© 2026 THPT BẢO LỘC · Cơ sở 1</span>
+  <strong>TUS IS HERE ✦</strong>
+ </div>
+</footer>
 
 </div>
 </body>
